@@ -18,6 +18,7 @@ cd newproject
 
 mkdir analysis output
 touch README.md
+echo "# Project Name: DSI Consulting Inc." > README.md
 touch analysis/main.py
 
 # download client data
@@ -43,9 +44,8 @@ cp ./data/raw/*server*.log ./data/processed/server_logs/ 2>/dev/null
 cp ./data/raw/*user*.log ./data/processed/user_logs/ 2>/dev/null
 cp ./data/raw/*event*.log ./data/processed/event_logs/ 2>/dev/null
 
-# 7. Remove files containing "ipaddr" in the filename from ./data/raw and ./data/processed/user_logs
-rm -f ./data/raw/*ipaddr* 2>/dev/null
-rm -f ./data/processed/user_logs/*ipaddr* 2>/dev/null
+# 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
+rf -rf ./data
 
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
 find ./data/processed -type f > ./data/inventory.txt
